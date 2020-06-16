@@ -2,12 +2,12 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import ArticleDetail from '../Article/ArticleDetail';
-import { wrap } from 'module';
+import { findByTestAttr } from '../../test/testUtils';
 
 Enzyme.configure({
-  adapter: new EnzymeAdapter(),
-  disableLifecycleMethods: true,
-});
+    adapter: new EnzymeAdapter(),
+    disableLifecycleMethods: true,
+  });
 
 const setup = (props={}, state=null) => {
     //@ts-ignore
@@ -15,10 +15,6 @@ const setup = (props={}, state=null) => {
     //@ts-ignore
     state && wrapper.setState(state)
     return wrapper;
-}
-
-const findByTestAttr = (wrapper: any, val:string) => {
-    return wrapper.find(`[data-test="${val}"]`);
 }
 
 test('Component render without error', () => {
