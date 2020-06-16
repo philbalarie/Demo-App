@@ -4,7 +4,7 @@ import './App.css';
 import ArticleList from './containers/Article/ArticleList';
 
 const App: React.FC = () => (
-  <div className="App">
+  <div data-test="App" className="App">
     <ArticleList />
   </div>
 )
