@@ -6,9 +6,9 @@ interface Props {
 }
 
 const ArticleDetail: React.FC<Props> = ({ title, content }) => (
-    <div className="article">
-        <h1>{ title }</h1>
-        <p>{ content }</p>
+    <div data-test="ArticleDetail" className="article">
+        <h1 data-test="ArticleDetail-title">{ title }</h1>
+        <p data-test="ArticleDetail-content">{ content }</p>
     </div>
 );
 
