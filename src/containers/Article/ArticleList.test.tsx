@@ -4,6 +4,8 @@ import EnzymeAdapter from 'enzyme-adapter-react-16';
 import ArticleList from './ArticleList';
 import { storeFactory, findByTestAttr } from '../../test/testUtils';
 import Article from '../../article.model';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
 
 Enzyme.configure({
     adapter: new EnzymeAdapter(),
@@ -12,9 +14,12 @@ Enzyme.configure({
 
   const setup = (initialState={}) => {
     const store = storeFactory(initialState);
-    //@ts-ignore
-    const wrapper = shallow(<ArticleList store={store} />);
-    return wrapper;
+    
+    return mount(
+      <Provider store={store}>
+        <ArticleList />
+      </Provider>
+    )
   }
 
   const initialState:Article = { id:"1", title: "titre de test", content: "contenu de test" }
@@ -22,6 +27,5 @@ Enzyme.configure({
 test('Render component without error', () => {
   const wrapper = setup(initialState);
   const ArticleListComponent = findByTestAttr(wrapper,'ArticleList');
-  console.log(ArticleListComponent.debug());
-  //expect(ArticleListComponent.length).toBe(1);
+  expect(ArticleListComponent.length).toBe(1);
 })

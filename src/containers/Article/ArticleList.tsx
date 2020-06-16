@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import ArticleDetail from '../../components/Article/ArticleDetail';
 import { RootState } from '../../configureStore';
@@ -20,7 +20,7 @@ const ArticleList: React.FC = () => {
     }, [fetchDatas])
 
 
-    const articles = articleList.map((article: Article )=>(
+    const articles = articleList.map((article: Article ) => (
         <ArticleDetail key={article.id} title={article.title} content={article.content} />
     ));
     
