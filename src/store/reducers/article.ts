@@ -1,9 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
-import Article from '../../article.model';
-import { RootState } from '../../index';
 import { v4 as uuidv4 } from 'uuid';
 
+//FIXME: Modifier le state initial pour qu'il soit vide. 
 
 const initialState = {
     articles: [

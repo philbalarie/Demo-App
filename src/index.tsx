@@ -5,21 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // Redux Imports
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import articleReducer from './store/reducers/article';
-
-const rootReducer = combineReducers({
-  article: articleReducer
-});
-//@ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(thunk)
-));
+import store from './configureStore';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -32,4 +19,3 @@ ReactDOM.render(
 
 serviceWorker.unregister();
 
-export type RootState = ReturnType<typeof rootReducer>

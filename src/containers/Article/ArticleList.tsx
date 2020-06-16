@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import ArticleDetail from '../../components/Article/ArticleDetail';
-import { RootState } from '../../index';
+import { RootState } from '../../configureStore';
 import Article from '../../article.model';
 import { fetchArticles } from '../../store/actions/article';
 
