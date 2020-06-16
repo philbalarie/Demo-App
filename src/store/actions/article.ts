@@ -1,6 +1,6 @@
 import * as actionType from './actionTypes';
 import Article from '../../article.model';
-import axios from '../../axios';
+import axios from 'axios';
 
 export const fetchArticlesSuccess = ( articles: Article[] ) => {
     return {
@@ -17,7 +17,7 @@ export const fetchArticlesFail = ( error: string ) => {
 }
 
 export const fetchArticles = () => (dispatch:any) => {
-        axios.get('/articles.json').then((res) => {
+        return axios.get('https://fir-project-65e65.firebaseio.com/articles.json').then((res) => {
             dispatch( fetchArticlesSuccess(res.data) )
         }).catch(error => {
             dispatch(fetchArticlesFail(error.message))

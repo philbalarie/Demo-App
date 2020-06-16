@@ -18,7 +18,7 @@ export const findByTestAttr = (wrapper: any, val:string) => {
  * @function storeFactory
  * @returns {Store} - Redux store.
  */
-export const storeFactory = (initialState: any) => {
+export const storeFactory = (initialState: any = {}) => {
 
     //@ts-ignore
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
