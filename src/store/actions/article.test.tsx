@@ -4,7 +4,7 @@ import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import Article from '../../article.model';
 import  { storeFactory } from '../../test/testUtils';
-import { fetchArticles } from '../actions/article';
+import { fetchArticles, fetchArticlesSuccess } from '../actions/article';
 
 Enzyme.configure({
     adapter: new EnzymeAdapter(),
@@ -51,5 +51,7 @@ describe('get API datas from Firebase', () => {
 
     });
 
-});
+
+    });
+
 

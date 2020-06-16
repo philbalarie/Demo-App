@@ -12,6 +12,13 @@ Enzyme.configure({
     disableLifecycleMethods: true,
   });
 
+/**
+ *Factory function to create a ShallowWrapper for the component.
+ * @function setup
+ *
+ * @param {object} [state=null] - Initial state for this setup
+ * @returns {ReactWrapper}
+ */
   const setup = (initialState={}) => {
     const store = storeFactory(initialState);
     

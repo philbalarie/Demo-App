@@ -1,5 +1,5 @@
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import ArticleDetail from '../Article/ArticleDetail';
 import { findByTestAttr } from '../../test/testUtils';
@@ -9,6 +9,14 @@ Enzyme.configure({
     disableLifecycleMethods: true,
   });
 
+/**
+ *Factory function to create a ShallowWrapper for the Input component.
+ * @function setup
+ *
+ * @param {object} [props={}] - Initial props for this setup
+ * @param {object} [state=null] - Initial state for this setup
+ * @returns {ShallowWrapper}
+ */
 const setup = (props={}, state=null) => {
     //@ts-ignore
     const wrapper = shallow(<ArticleDetail {...props}  />)

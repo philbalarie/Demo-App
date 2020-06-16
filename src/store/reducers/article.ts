@@ -31,6 +31,14 @@ const fetchArticleFail = <T extends object, U extends object>(state: T, action: 
     return updateObject(state, { error })
 }
 
+/**
+ * Reducer for the articles
+ * @function reducer
+ * @template U
+ * @param {*} [state=initialState]  - State of the article Redux Store
+ * @param {U} action
+ * @returns {function} - function to update immutable object or default state
+ */
 const reducer = <U extends object>(state=initialState, action: U) => {
     //@ts-ignore
     switch ( action.type ) {

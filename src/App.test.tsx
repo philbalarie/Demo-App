@@ -1,6 +1,6 @@
 import React from 'react'
 import moxios from 'moxios';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import App from './App';
 import { findByTestAttr, storeFactory } from './test/testUtils';
@@ -10,6 +10,11 @@ Enzyme.configure({
     disableLifecycleMethods: true,
   });
 
+/**
+ * Factory function to create a ShallowWrapper for the component.
+ * @function setup
+ * @returns {ShallowWrapper}
+ */
 const setup = () => {
     const wrapper = shallow(<App />)
     return wrapper;
