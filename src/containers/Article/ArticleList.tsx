@@ -25,7 +25,7 @@ const ArticleList: React.FC = () => {
     ));
     
     return (
-        <div className="container">
+        <div data-test="ArticleList" className="container">
         <h1>Liste d'articles</h1>
         {articles}
     </div>
