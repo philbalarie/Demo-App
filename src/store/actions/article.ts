@@ -4,9 +4,7 @@ import axios from 'axios';
 import {Action, ActionCreator, Dispatch} from 'redux';
 import {ThunkAction} from 'redux-thunk';
 
-interface IState extends Article{}
-
-/**
+ /**
  * Action to add fetched articles to article state
  * @function fetchArticlesSuccess
  * @param {Article[]} articles - Fetched articles from Firebase DB
@@ -36,6 +34,8 @@ export const fetchArticlesFail: ActionCreator<Action> = ( error: string ) => {
 * @param {Dispatch} dispatch - function that accepts an action or an async action
  *@return {void}
  */
+
+ //FIXME: Améliorer le typage de la fonction asynchrone avec thunk
 export const fetchArticles: ActionCreator<ThunkAction<any, any, any, any>> = () => (dispatch: Dispatch) => {
     return axios.get('https://fir-project-65e65.firebaseio.com/articles.json').then((res) => {
         dispatch( fetchArticlesSuccess(res.data) )

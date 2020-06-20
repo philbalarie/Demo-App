@@ -1,10 +1,18 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 import { v4 as uuidv4 } from 'uuid';
+import Article from '../../article.model';
+import { ActionWithPayload } from '../../action.model';
 
-//FIXME: Modifier le state initial pour qu'il soit vide. 
+//FIXME: valider que le typage du state est OK
+interface ArticleState extends Object {
+    articles: Array<Article>,
+    error?: string
+}
 
-const initialState = {
+type Error = string;
+
+const initialState: ArticleState = {
     articles: [
         {
             id: uuidv4(),
@@ -14,18 +22,39 @@ const initialState = {
     ]
 }
 
-const addArticle = <T extends object, U extends object>(state: T, action: U) => {
-    //@ts-ignore
+/**
+ * Reducer to add a new article in the state
+ * @function addArticle
+ * @param {ArticleState} state
+ * @param {ActionWithPayload<Article>} action
+ * @returns
+ */
+const addArticle = (state: ArticleState, action: ActionWithPayload<Article>) => {
     return updateObject(state, action.payload)
 }
 
-const fetchArticlesSuccess = <T extends object, U extends object>(state: T, action: U) => {
+/**
+ * Reducer to add articles from the fetchArticle async action to the state if the status of request os 200. 
+ * @function fetchArticlesSuccess
+ * @param {ArticleState} state
+ * @param {ActionWithPayload<Article>} action
+ * @returns
+ */
+
+const fetchArticlesSuccess = (state: ArticleState, action: ActionWithPayload<Article>) => {
         //@ts-ignore
     const articles = [action.payload]
     return updateObject(state, { articles })
 }
 
-const fetchArticleFail = <T extends object, U extends object>(state: T, action: U) => {
+/**
+ * Reducer to add error message from the fetchArticle async action to the state if an error occur. 
+ * @function fetchArticlesSuccess
+ * @param {ArticleState} state
+ * @param {ActionWithPayload<Article>} action
+ * @returns
+ */
+const fetchArticleFail = (state: ArticleState, action: ActionWithPayload<Error>) => {
     //@ts-ignore
     const error = action.payload
     return updateObject(state, { error })
@@ -34,12 +63,11 @@ const fetchArticleFail = <T extends object, U extends object>(state: T, action: 
 /**
  * Reducer for the articles
  * @function reducer
- * @template U
- * @param {object} [state=initialState]  - State of the article Redux Store
- * @param {U} action
+ * @param {*} [state=initialState]
+ * @param {ActionWithPayload<any>} action
  * @returns {function} - function to update immutable object or default state
  */
-const reducer = <U extends object>(state=initialState, action: U) => {
+const reducer = (state = initialState, action: ActionWithPayload<any>) => {
     //@ts-ignore
     switch ( action.type ) {
         //@ts-ignore
@@ -50,4 +78,4 @@ const reducer = <U extends object>(state=initialState, action: U) => {
     } 
 } 
 
-export default reducer
+export default reducer;
