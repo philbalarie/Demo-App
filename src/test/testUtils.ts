@@ -18,6 +18,8 @@ export const findByTestAttr = (wrapper: any, val:string) => {
  * @function storeFactory
  * @returns {Store} - Redux store.
  */
+
+ //TODO: Valider l'utilité du initial state en paramètre
 export const storeFactory = (initialState: any = {}) => {
 
     //@ts-ignore

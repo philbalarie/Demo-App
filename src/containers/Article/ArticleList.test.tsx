@@ -15,7 +15,6 @@ Enzyme.configure({
 /**
  *Factory function to create a ShallowWrapper for the component.
  * @function setup
- *
  * @param {object} [state=null] - Initial state for this setup
  * @returns {ShallowWrapper}
  */
