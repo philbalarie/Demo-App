@@ -1,10 +1,11 @@
-import React from 'react'
 import moxios from 'moxios';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import Article from '../../article.model';
-import  { storeFactory } from '../../test/testUtils';
-import { fetchArticles, fetchArticlesSuccess } from '../actions/article';
+import { fetchArticles } from '../actions/article';
+import { Store } from 'redux';
+import { storeFactory, findByTestAttr } from '../../test/testUtils';
+
 
 Enzyme.configure({
     adapter: new EnzymeAdapter(),
@@ -14,7 +15,7 @@ Enzyme.configure({
 describe('get API datas from Firebase', () => {
 
     let article: Article;
-    let store: any;
+    let store: Store;
 
     beforeEach(() => {
         article = {id: "1", title: "Titre de test", content: "Contenu de test"};
@@ -29,7 +30,7 @@ describe('get API datas from Firebase', () => {
     test('add response articles to state', (done) => {
 
         moxios.wait(() => {
-            //@ts-ignore
+            
             const request = moxios.requests.mostRecent();
 
             request.respondWith({
@@ -44,7 +45,6 @@ describe('get API datas from Firebase', () => {
             .then(() => {
                 const newState = store.getState();
 
-                //@ts-ignore
                 expect(newState.article.articles).toEqual([article])
 
             });

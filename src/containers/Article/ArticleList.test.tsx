@@ -17,7 +17,7 @@ Enzyme.configure({
  * @function setup
  *
  * @param {object} [state=null] - Initial state for this setup
- * @returns {ReactWrapper}
+ * @returns {ShallowWrapper}
  */
   const setup = (initialState={}) => {
     const store = storeFactory(initialState);
@@ -33,6 +33,6 @@ Enzyme.configure({
 
 test('Render component without error', () => {
   const wrapper = setup(initialState);
-  const ArticleListComponent = findByTestAttr(wrapper,'ArticleList');
+  const ArticleListComponent = findByTestAttr(wrapper, 'ArticleList');
   expect(ArticleListComponent.length).toBe(1);
 })

@@ -17,7 +17,6 @@ const ArticleList: React.FC = () => {
     
     const dispatch = useDispatch();
 
-    //@ts-ignore
     const fetchDatas = useCallback(() => dispatch(fetchArticles()), []);
 
     useEffect(() => {
