@@ -13,7 +13,7 @@ import { fetchArticles } from '../../store/actions/article';
 const ArticleList: React.FC = () => {
 
     //@ts-ignore
-    const articleList = useSelector((state: RootState) => state.article.articles)
+    const articleList: Article[] = useSelector((state: RootState) => state.article.articles)
     
     const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const ArticleList: React.FC = () => {
     }, [fetchDatas])
 
 
-    const articles = articleList.map((article: Article ) => (
+    const articles = articleList.map(article => (
         <ArticleDetail key={article.id} title={article.title} content={article.content} />
     ));
     

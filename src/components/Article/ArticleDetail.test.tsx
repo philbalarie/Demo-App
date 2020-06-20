@@ -3,6 +3,7 @@ import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import ArticleDetail from '../Article/ArticleDetail';
 import { findByTestAttr } from '../../test/testUtils';
+import Article from '../../article.model';
 
 Enzyme.configure({
     adapter: new EnzymeAdapter(),
@@ -13,15 +14,12 @@ Enzyme.configure({
  *Factory function to create a ShallowWrapper for the Input component.
  * @function setup
  *
- * @param {object} [props={}] - Initial props for this setup
- * @param {object} [state=null] - Initial state for this setup
+ * @param {object} [props={id, title, content}] - Initial props for this setup bases on Article model
  * @returns {ShallowWrapper}
  */
-const setup = (props={}, state=null) => {
-    //@ts-ignore
+
+const setup = (props: Article={id: '', title: '', content: ''}) => {
     const wrapper = shallow(<ArticleDetail {...props}  />)
-    //@ts-ignore
-    state && wrapper.setState(state)
     return wrapper;
 }
 
@@ -32,10 +30,10 @@ test('Component render without error', () => {
 });
 
 describe('Component should use Props', () => {
-    let wrapper: any;
-    let initialProps: any;
+    let wrapper: ShallowWrapper;
+    let initialProps: Article;
     beforeEach(() => {
-        initialProps = { title: "Titre de test", content: "Contenu de test" };
+        initialProps = { id: '1', title: "Titre de test", content: "Contenu de test" };
         wrapper = setup(initialProps);
     })
 

@@ -35,7 +35,7 @@ const fetchArticleFail = <T extends object, U extends object>(state: T, action: 
  * Reducer for the articles
  * @function reducer
  * @template U
- * @param {*} [state=initialState]  - State of the article Redux Store
+ * @param {object} [state=initialState]  - State of the article Redux Store
  * @param {U} action
  * @returns {function} - function to update immutable object or default state
  */
@@ -43,7 +43,7 @@ const reducer = <U extends object>(state=initialState, action: U) => {
     //@ts-ignore
     switch ( action.type ) {
         //@ts-ignore
-        case actionTypes.ADD_ARTICLE : return addArticle(state, action) ;
+        case actionTypes.ADD_ARTICLE : return addArticle(state, action);
         case actionTypes.FETCH_ARTICLE_SUCCESS : return fetchArticlesSuccess(state, action);
         case actionTypes.FETCH_ARTICLE_FAIL : return fetchArticleFail(state, action);
         default: return state;
