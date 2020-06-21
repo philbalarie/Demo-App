@@ -3,6 +3,9 @@ import './App.css';
 
 import ArticleList from './containers/Article/ArticleList';
 
+import Router from './containers/Navigation/Router';
+import Navigation from './containers/Navigation/Navigation';
+
 /**
  * @component
  * @return {JSX.Element}
@@ -10,7 +13,8 @@ import ArticleList from './containers/Article/ArticleList';
 
 const App: React.FC = () => (
   <div data-test="App" className="App">
-    <ArticleList />
+    <Navigation />
+    <Router />
   </div>
 )
 

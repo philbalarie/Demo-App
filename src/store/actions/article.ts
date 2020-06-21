@@ -38,8 +38,34 @@ export const fetchArticlesFail: ActionCreator<Action> = ( error: string ) => {
  //FIXME: Améliorer le typage de la fonction asynchrone avec thunk
 export const fetchArticles: ActionCreator<ThunkAction<any, any, any, any>> = () => (dispatch: Dispatch) => {
     return axios.get('https://fir-project-65e65.firebaseio.com/articles.json').then((res) => {
+        
+
         dispatch( fetchArticlesSuccess(res.data) )
+
     }).catch(error => {
         dispatch(fetchArticlesFail(error.message))
+    })
+}
+
+export const addArticleSuccess: ActionCreator<Action> = ( article: Article ) => {
+    return {
+        type: actionType.ADD_ARTICLE_SUCCESS,
+        payload: article
+    }
+}
+
+export const addArticleFail: ActionCreator<Action> = ( error: string ) => {
+    return {
+        type: actionType.ADD_ARTICLE_FAIL,
+        payload: error
+    }
+}
+
+export const addArticle: ActionCreator<ThunkAction<any, any, any, any>> = (article) => (dispatch: Dispatch) => {
+    return axios.post('https://fir-project-65e65.firebaseio.com/articles.json', article).then((res) => {
+
+        dispatch( addArticleSuccess(res.data) )
+    }).catch(error => {
+        dispatch(addArticleFail(error.message))
     })
 }

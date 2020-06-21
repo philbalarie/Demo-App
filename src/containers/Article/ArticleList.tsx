@@ -19,14 +19,19 @@ const ArticleList: React.FC = () => {
 
     const fetchDatas = useCallback(() => dispatch(fetchArticles()), []);
 
-    useEffect(() => {
-        fetchDatas()
+
+    useEffect(() => { 
+        
+        fetchDatas() 
+        
     }, [fetchDatas])
+    
 
-
+    //@ts-ignore
     const articles = articleList.map(article => (
         <ArticleDetail key={article.id} title={article.title} content={article.content} />
     ));
+
     
     return (
         <div data-test="ArticleList" className="container">

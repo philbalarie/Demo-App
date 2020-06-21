@@ -1,0 +1,2 @@
+- Ajouter les Jsdocs pour toutes les nouvelles fonctions depuis le dernier commit
+- Comprendre comment ajouter correctement un article dans la BDD et dans le state. 
