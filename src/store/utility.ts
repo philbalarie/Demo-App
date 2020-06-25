@@ -11,3 +11,9 @@ export const updateObject = (oldObject:object, updatedProperties: object) => {
         ...updatedProperties
     };
 };
+
+export const convertDataToArr = (datas: object) => {
+
+    return Object.values(datas);
+
+}

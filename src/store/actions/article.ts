@@ -37,10 +37,11 @@ export const fetchArticlesFail: ActionCreator<Action> = ( error: string ) => {
 
  //FIXME: Améliorer le typage de la fonction asynchrone avec thunk
 export const fetchArticles: ActionCreator<ThunkAction<any, any, any, any>> = () => (dispatch: Dispatch) => {
-    return axios.get('https://fir-project-65e65.firebaseio.com/articles.json').then((res) => {
+    return axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => {
         
+        const filteredRes = res.data.slice(0,4);
 
-        dispatch( fetchArticlesSuccess(res.data) )
+        dispatch( fetchArticlesSuccess(filteredRes) )
 
     }).catch(error => {
         dispatch(fetchArticlesFail(error.message))
@@ -62,9 +63,9 @@ export const addArticleFail: ActionCreator<Action> = ( error: string ) => {
 }
 
 export const addArticle: ActionCreator<ThunkAction<any, any, any, any>> = (article) => (dispatch: Dispatch) => {
-    return axios.post('https://fir-project-65e65.firebaseio.com/articles.json', article).then((res) => {
+    return axios.post('https://jsonplaceholder.typicode.com/posts', article).then(() => {
 
-        dispatch( addArticleSuccess(res.data) )
+        dispatch( addArticleSuccess(article) )
     }).catch(error => {
         dispatch(addArticleFail(error.message))
     })

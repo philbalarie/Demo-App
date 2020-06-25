@@ -28,7 +28,7 @@ Enzyme.configure({
     )
   }
 
-  const initialState:Article = { id:"1", title: "titre de test", content: "contenu de test" }
+  const initialState:Article = { id:"1", title: "titre de test", body: "contenu de test" }
 
 test('Render component without error', () => {
   const wrapper = setup(initialState);

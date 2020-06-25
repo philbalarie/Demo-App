@@ -14,11 +14,11 @@ Enzyme.configure({
  *Factory function to create a ShallowWrapper for the Input component.
  * @function setup
  *
- * @param {object} [props={id, title, content}] - Initial props for this setup bases on Article model
+ * @param {object} [props={id, title, body}] - Initial props for this setup bases on Article model
  * @returns {ShallowWrapper}
  */
 
-const setup = (props: Article={id: '', title: '', content: ''}) => {
+const setup = (props: Article={id: '', title: '', body: ''}) => {
     const wrapper = shallow(<ArticleDetail {...props}  />)
     return wrapper;
 }
@@ -29,11 +29,11 @@ test('Component render without error', () => {
     expect(ArticleDetailComponent.length).toBe(1);
 });
 
-describe('Component should use Props', () => {
+describe('Component should use Body', () => {
     let wrapper: ShallowWrapper;
     let initialProps: Article;
     beforeEach(() => {
-        initialProps = { id: '1', title: "Titre de test", content: "Contenu de test" };
+        initialProps = { id: '1', title: "Titre de test", body: "Premier article" };
         wrapper = setup(initialProps);
     })
 
@@ -42,8 +42,8 @@ describe('Component should use Props', () => {
         expect(titleProps.contains(initialProps.title)).toEqual(true);
     })
 
-    test('content', () => {
-        const contentProps = findByTestAttr(wrapper, 'ArticleDetail-content');
-        expect(contentProps.contains(initialProps.content)).toEqual(true);
+    test('body', () => {
+        const bodyProps = findByTestAttr(wrapper, 'ArticleDetail-body');
+        expect(bodyProps.contains(initialProps.body)).toEqual(true);
     })
 });

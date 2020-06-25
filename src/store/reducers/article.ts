@@ -17,7 +17,7 @@ const initialState: ArticleState = {
         {
             id: uuidv4(),
             title: "Premier article",
-            content: "Premier content"
+            body: "Premier body"
         }
     ]
 }
@@ -32,8 +32,7 @@ const initialState: ArticleState = {
 
 const fetchArticlesSuccess = (state: ArticleState, action: ActionWithPayload<Article>) => {
         //@ts-ignore
-    const articles = [action.payload]
-    return updateObject(state, { articles })
+    return updateObject(state, { articles: action.payload })
 }
 
 /**
@@ -53,7 +52,7 @@ const addArticleSuccess = (state: ArticleState, action: ActionWithPayload<Articl
 
     const articles: Article[] = state.articles.concat(action.payload);
 
-    return updateObject(state, { articles })
+    return updateObject(state, articles)
 }
 
 const addArticleFail = (state: ArticleState, action: ActionWithPayload<Error>) => {

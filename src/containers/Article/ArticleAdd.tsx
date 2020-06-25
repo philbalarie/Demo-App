@@ -17,8 +17,8 @@ const ArticleAdd: React.FC<Props> = ({ history }) => {
         event.preventDefault();
 
         //@ts-ignore
-        const { title, content } = event.target.elements;
-        addDataToBDAndState({id: uuidv4(), title: title.value, content: content.value})
+        const { title, body } = event.target.elements;
+        addDataToBDAndState({id: uuidv4(), title: title.value, body: body.value})
 
         history.replace(routes.ARTICLES_LIST);
     };
@@ -34,7 +34,7 @@ const ArticleAdd: React.FC<Props> = ({ history }) => {
             <br/>
             <label htmlFor="content">
                 Contenu: 
-                <textarea name="content" cols={30} rows={10}></textarea>
+                <textarea name="body" cols={30} rows={10}></textarea>
             </label>
             <button type="submit">Envoyer</button>
         </form>
