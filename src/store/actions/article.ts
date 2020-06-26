@@ -39,7 +39,7 @@ export const fetchArticlesFail: ActionCreator<Action> = ( error: string ) => {
 export const fetchArticles: ActionCreator<ThunkAction<any, any, any, any>> = () => (dispatch: Dispatch) => {
     return axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => {
         
-        const filteredRes = res.data.slice(0,4);
+        const filteredRes = res.data.slice(0, 4)
 
         dispatch( fetchArticlesSuccess(filteredRes) )
 

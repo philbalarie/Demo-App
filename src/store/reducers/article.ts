@@ -6,20 +6,15 @@ import { ActionWithPayload } from '../../action.model';
 
 //FIXME: valider que le typage du state est OK
 interface ArticleState extends Object {
-    articles: Array<Article>,
+    articles?: Array<Article>,
     error?: string
 }
 
 type Error = string;
 
-const initialState: ArticleState = {
-    articles: [
-        {
-            id: uuidv4(),
-            title: "Premier article",
-            body: "Premier body"
-        }
-    ]
+const initialState = {
+    articles: [], 
+    error: ''
 }
 
 /**
@@ -50,7 +45,7 @@ const fetchArticleFail = (state: ArticleState, action: ActionWithPayload<Error>)
 
 const addArticleSuccess = (state: ArticleState, action: ActionWithPayload<Article>) => {
 
-    const articles: Article[] = state.articles.concat(action.payload);
+    const articles: Article[] = state.articles!.concat(action.payload);
 
     return updateObject(state, articles)
 }
